@@ -2,6 +2,14 @@
 
 `bencoding` is a simple Python library for decoding bencoded data.
 
+## Installation
+
+```bash
+pip install bencoding-py
+```
+
+## Usage
+
 ```python
 import bencoding
 
