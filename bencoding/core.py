@@ -10,7 +10,7 @@ BencodedType: TypeAlias = "str | int | list[BencodedType] | dict[str, BencodedTy
 T = TypeVar("T", bound=BencodedType)
 
 
-# NamedTuple doesn't support generics in Python 3.0 and below
+# NamedTuple doesn't support generics in Python 3.10 and below
 if sys.version_info >= (3, 11):
 
     class _ParsedVal(NamedTuple, Generic[T]):
@@ -41,13 +41,12 @@ def _parse_str(stream: bytes, idx: int) -> _ParsedVal[str]:
 
 
 def _parse_int(stream: bytes, idx: int) -> _ParsedVal[int]:
-    built_val: list[str] = []
+    built_int = 0
     idx += 1
     while stream[idx] != ord("e"):
-        built_val.append(chr(stream[idx]))
+        built_int = built_int * 10 + (stream[idx] - ord("0"))
         idx += 1
-    val = "".join(built_val)
-    return _ParsedVal(int(val), idx + 1)
+    return _ParsedVal(built_int, idx + 1)
 
 
 def _parse_list(stream: bytes, idx: int) -> _ParsedVal[list[BencodedType]]:
