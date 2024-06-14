@@ -20,5 +20,5 @@ print(data) # b'spam'
 my_torrent = pathlib.Path('my_torrent.torrent')
 my_torrent_bytes = my_torrent.read_bytes()
 data = bencoding.decode(my_torrent_bytes)
-print(data)
+print(data) # {'announce': 'http://tracker.example.com:80/announce', ...}
 ```
