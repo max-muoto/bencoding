@@ -1,3 +1,4 @@
+import sys
 from typing_extensions import TypeAlias
 from typing import Any, NamedTuple, Generic, TypeVar
 
@@ -7,9 +8,17 @@ BencodedType: TypeAlias = "str | int | list[BencodedType] | dict[str, BencodedTy
 T = TypeVar("T", bound=BencodedType)
 
 
-class _ParsedVal(NamedTuple, Generic[T]):
-    val: T
-    idx: int
+# NamedTuple doesn't support generics in Python 3.0 and below
+if sys.version_info >= (3, 11):
+
+    class _ParsedVal(NamedTuple, Generic[T]):
+        val: T
+        idx: int
+else:
+
+    class _ParsedVal(NamedTuple):
+        val: Any
+        idx: int
 
 
 def _parse_str(stream: bytes, idx: int) -> _ParsedVal[str]:
