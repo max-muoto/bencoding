@@ -1,10 +1,13 @@
-from typing import Any, NamedTuple
+from typing_extensions import TypeAlias
+from typing import Any, NamedTuple, Generic, TypeVar
 
 
-type BencodedType = str | int | list[BencodedType] | dict[str, BencodedType]
+BencodedType: TypeAlias = "str | int | list[BencodedType] | dict[str, BencodedType]"
+
+T = TypeVar("T", bound=BencodedType)
 
 
-class _ParsedVal[T: BencodedType](NamedTuple):
+class _ParsedVal(NamedTuple, Generic[T]):
     val: T
     idx: int
 
