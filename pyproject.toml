@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "bencoded"
 packages = [{ include = "bencoding" }]
-version = "0.1.0"
+version = "0.1.1"
 description = "Decode benocoded binary files."
 authors = ["Maxwell Muoto <maxmuoto@gmail.com>"]
 license = "MIT"
