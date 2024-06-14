@@ -10,7 +10,7 @@ BencodedType: TypeAlias = "str | int | list[BencodedType] | dict[str, BencodedTy
 T = TypeVar("T", bound=BencodedType)
 
 
-# NamedTuple doesn't support generics in Python 3.0 and below
+# NamedTuple doesn't support generics in Python 3.10 and below
 if sys.version_info >= (3, 11):
 
     class _ParsedVal(NamedTuple, Generic[T]):
