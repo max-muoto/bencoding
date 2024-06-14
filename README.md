@@ -23,7 +23,7 @@ data = bencoding.decode(b'i42e')
 print(data) # 42
 
 data = bencoding.decode(b'4:spam')  
-print(data) # b'spam'
+print(data) # 'spam'
 
 my_torrent = pathlib.Path('my_torrent.torrent')
 my_torrent_bytes = my_torrent.read_bytes()
