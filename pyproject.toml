@@ -5,6 +5,7 @@ description = "Decode benocoded binary files."
 authors = ["Maxwell Muoto <maxmuoto@gmail.com>"]
 license = "MIT"
 readme = "README.md"
+include = ["bencoding/py.typed"]
 
 [tool.poetry.dependencies]
 python = "^3.12"
