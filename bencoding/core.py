@@ -19,13 +19,14 @@ def _parse_str(stream: bytes, idx: int) -> _ParsedVal[str]:
         idx += 1
 
     str_len = int("".join(built_str_len))
-    built_str = ""
+    built_str: list[str] = []
     idx += 1
     for _ in range(str_len):
-        built_str += chr(stream[idx])
+        built_str.append(chr(stream[idx]))
         idx += 1
 
-    return _ParsedVal(built_str, idx)
+    val = "".join(built_str)
+    return _ParsedVal(val, idx)
 
 
 def _parse_int(stream: bytes, idx: int) -> _ParsedVal[int]:
@@ -49,7 +50,7 @@ def _parse_list(stream: bytes, idx: int) -> _ParsedVal[list[BencodedType]]:
 
 def _parse_dict(stream: bytes, idx: int) -> _ParsedVal[dict[str, BencodedType]]:
     curr_dict: dict[str, BencodedType] = {}
-    idx += 1  # Increment to skip 'd'
+    idx += 1
     while stream[idx] != ord("e"):
         key, idx = _parse_str(stream, idx)
         value, idx = _parse(stream, idx)
