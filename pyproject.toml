@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "bencoding-py"
+name = "bencoded"
 packages = [{ include = "bencoding" }]
 version = "0.1.0"
 description = "Decode benocoded binary files."

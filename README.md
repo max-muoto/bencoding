@@ -5,7 +5,7 @@
 ## Installation
 
 ```bash
-pip install bencoding-py
+pip install bencoded
 ```
 
 ## Usage
