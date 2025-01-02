@@ -1,8 +1,10 @@
 from __future__ import annotations
 
 import sys
-from typing_extensions import TypeAlias
-from typing import Any, NamedTuple, Generic, TypeVar
+from typing import Any, NamedTuple, Generic, TypeVar, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from typing_extensions import TypeAlias
 
 
 BencodedType: TypeAlias = "str | int | list[BencodedType] | dict[str, BencodedType]"
