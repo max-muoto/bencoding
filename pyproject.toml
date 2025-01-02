@@ -1,6 +1,6 @@
 [project]
 name = "bencoded"
-version = "0.1.1"
+version = "0.1.2"
 requires-python = ">=3.9, <3.14"
 description = "Decode benocoded binary files."
 authors = [{ name = "Maxwell Muoto", email = "maxmuoto@gmail.com" }]
